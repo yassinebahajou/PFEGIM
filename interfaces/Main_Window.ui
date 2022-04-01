@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>601</width>
+    <height>382</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>601</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menufile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="Action_Model_Training"/>
+    <addaction name="Action_Detect_Emotion"/>
+    <addaction name="separator"/>
+    <addaction name="Action_Model_Training_using_Keras"/>
+    <addaction name="Action_Emotion_Detection_using_Keras"/>
+   </widget>
+   <addaction name="menufile"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="Action_New_Recording">
+   <property name="text">
+    <string>New Recording</string>
+   </property>
+  </action>
+  <action name="Action_Open_Recording">
+   <property name="text">
+    <string>Open Recording</string>
+   </property>
+  </action>
+  <action name="Action_Open_Folder">
+   <property name="text">
+    <string>Open Folder</string>
+   </property>
+  </action>
+  <action name="Action_Annotation">
+   <property name="text">
+    <string>Annotation</string>
+   </property>
+  </action>
+  <action name="Action_Detect_Emotion">
+   <property name="text">
+    <string>Detect Emotion using Sklearn</string>
+   </property>
+  </action>
+  <action name="Action_Model_Training">
+   <property name="text">
+    <string>Create Model using Sklearn</string>
+   </property>
+  </action>
+  <action name="Action_Model_Training_using_Keras">
+   <property name="text">
+    <string>Create Model using Keras</string>
+   </property>
+  </action>
+  <action name="Action_Emotion_Detection_using_Keras">
+   <property name="text">
+    <string>Detect Emotion using Keras</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
