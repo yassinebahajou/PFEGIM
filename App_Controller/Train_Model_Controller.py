@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 import keras
+import tensorflow as tf
 from keras.layers import Dense, Conv2D, MaxPool2D, Dropout, Flatten
 from keras.models import Sequential
 from keras.preprocessing import image
@@ -28,6 +29,7 @@ class Train_Model_Controller():
         )
         self.x_train = train_datages.flow_from_directory(directory=file_path+"/train",
                                                        target_size=(256, 256), batch_size=1, class_mode='binary')
+        print("classes:",self.x_train.class_indices)
 
     def load_test_data(self,file_path):
         test_datages = image.ImageDataGenerator(
@@ -62,9 +64,15 @@ class Train_Model_Controller():
 
     def train_model(self):
         print("train model")
+        print("classes:", self.x_train.class_indices)
         print(self.x_train is None)
         print(self.x_test is None)
-        self.model.fit(self.x_train, steps_per_epoch=8, epochs=10, validation_steps=2, validation_data=self.x_test)
+        path = "D:/workstation/Config/cp.ckpt"
+        cp_callback = tf.keras.callbacks.ModelCheckpoint(path, save_weights_only = True, verbose = 1)
+
+        self.model.fit(self.x_train, steps_per_epoch=8,
+            epochs=10, validation_steps=2,
+            validation_data=self.x_test, callbacks=[cp_callback])
 
     def save_model(self):
         pickled_model_string = pickle.dumps(self.model)
@@ -80,7 +88,6 @@ class Train_Model_Controller():
         # with open("D:/workstation/MyModel/MyModel_" + d + "_" + au + "_.txt", "wb") as file:
         #
         #     file.write(pickled_model_string)
-
 
     def load_image(self,file_path):
         self.img = image.load_img(file_path, target_size=(256, 256))
