@@ -8,6 +8,8 @@ from App_View.ui_Detect_Disease_Window import Ui_Detect_Disease_Window, QPixmap
 import matplotlib.pyplot as plt
 from xml.dom import minidom
 from xml.etree import ElementTree
+from keras.preprocessing import image
+import numpy as np
 
 from App_Controller.Detect_Disease_Controller import Detect_Disease_Controller
 
@@ -22,18 +24,14 @@ class Detect_Disease_Window(QMainWindow):
         # self.ui.button_remove_noise.setVisible(False)
         # self.ui.button_plot_features.setVisible(False)
         self.ui.button_browse_audio.clicked.connect(self.import_image_file)
-        self.ui.button_play_audio.clicked.connect(self.play_audio)
-        self.ui.button_plot_audio.clicked.connect(self.plot_audio)
-        # self.ui.button_extract_features.clicked.connect(self.save_feature_csv)
-        # self.ui.button_remove_noise.clicked.connect(self.remove_noise)
-        # self.ui.button_show_features.clicked.connect(self.launchExcelFile)
-        # self.ui.button_plot_features.clicked.connect(self.plot_features)
         self.ui.button_import_model.clicked.connect(self.import_model)
-        self.ui.button_detect_emotion.clicked.connect(self.detect_emotion)
+        self.ui.button_detect_emotion.setEnabled(True)
+        self.ui.button_detect_emotion.clicked.connect(self.detect_disease)
+
 
 
     def import_image_file(self):
-        selected_Qurl = QFileDialog.getOpenFileUrl(self, "Choose XRAY to Import", 'D:', "Image Files (*.png )")[0]
+        selected_Qurl = QFileDialog.getOpenFileUrl(self, "Choose XRAY to Import", 'D:')[0]
         lay = QVBoxLayout(self.ui.widget)
         label = QLabel(self)
         pixmap = QPixmap(selected_Qurl.path()[1:])
@@ -44,40 +42,33 @@ class Detect_Disease_Window(QMainWindow):
         self.ui.button_play_audio.setEnabled(True)
         self.ui.button_plot_audio.setEnabled(True)
         # self.ui.button_extract_features.setEnabled(True)
-        self.ui.progress_bar.setText("wave file selected.")
+        self.load_image(selected_Qurl.path()[1:])
+        print("image url:",selected_Qurl.path()[1:])
+        self.ui.progress_bar.setText("image selected.")
 
-    def play_audio(self):
-        self.ui.progress_bar.setText("audio playing now.")
-        print("audio playing now.")
-        self.controller.play_audio()
-        self.ui.progress_bar.setText("audio playing end.")
-        print("audio playing end. ")
-
-    def plot_audio(self):
-        self.ui.progress_bar.setText("plotting now.")
-        print("plotting now. ")
-        self.controller.plot_audio()
-        self.ui.progress_bar.setText("plotting done.")
-        print("plotting done. ")
+    def load_image(self,file_path):
+        self.img = image.load_img(file_path, target_size=(256, 256))
+        self.img = image.img_to_array(self.img) / 255
+        self.img = np.array([self.img])
+        return self.img.shape
 
     def import_model(self):
         print("import model")
-        model_path =  str(QFileDialog.getOpenFileName(self, "get_path_solution", "/my_models", "Json Files (*.json)")[0])
-        if model_path:
-            # self.Databasefile.setText(fileName[0])
+        # model_path =  str(QFileDialog.getOpenFileName(self, "get_path_solution", "/my_models", "Json Files (*.json)")[0])
+        # if model_path:
+        #     if os.sep == '/':
+        #         model_path = model_path.replace('/', '\\')
 
-            #   If Windows, change the separator
-            if os.sep == '/':
-                model_path = model_path.replace('/', '\\')
-
-        au, date_ = self.controller.import_model(model_path)
-        self.show_msg_box("Model Imported successfully, The Model's accuracy is "+au+"%.")
-        self.ui.label_model_details.setText("Auccuracy: "+au+", Date: "+date_)
+        self.controller.import_model("model_path")
+        self.setWindowTitle("Detect Disease PNEUMONIA")
+        # self.show_msg_box("Model Imported successfully, The Model's accuracy is "+au+"%.")
+        # self.ui.label_model_details.setText("Auccuracy: "+au+", Date: "+date_)
         # print(self.controller.detect_emotion())
 
-    def detect_emotion(self):
-        emotion = self.controller.detect_emotion()
-        self.show_msg_box("Emotion Detection Done,Emotions Detected "+emotion.upper()+" .")
+    def detect_disease(self):
+        d = self.controller.detect_disease(self.img)
+        print("emotion:", d)
+        self.show_msg_box("Disease Detection Done,X-Ray ["+str(d)+"]")
 
     def show_msg_box(self, text):
         msgBox = QMessageBox()
@@ -88,39 +79,6 @@ class Detect_Disease_Window(QMainWindow):
         self.controller.extract_features()
         self.show_msg_box("Features Extracted Successfully")
         self.ui.button_detect_emotion.setEnabled(True)
-
-
-
-    def plot_features(self):
-        mfc, chrom, meli, mfccs_time, chroma_time, mels_time = self.extract_feature(self)
-        plt.subplot(3, 1, 1)
-        plt.title("mfccs")
-        plt.plot(mfccs_time, mfc)
-        plt.subplot(3, 1, 2)
-        plt.title("chroma")
-        plt.plot(chroma_time, chrom)
-        plt.subplot(3, 1, 3)
-        plt.title("mels")
-        plt.plot(mels_time, meli)
-        plt.show()
-
-
-    # def remove_noise(self):
-    #     (Frequency, array) = read(self.file_path)  # Reading the sound file.
-    #     print(len(array))  # length of our array
-    #     FourierTransformation = sp.fft.fft(array)  # Calculating the fourier transformation of the signal
-    #     scale = np.linspace(0, Frequency, len(array))
-    #     GuassianNoise = np.random.rand(len(FourierTransformation))  # Adding guassian Noise to the signal.
-    #     NewSound = GuassianNoise + array
-    #     write("audio_files/New-"+self.song_l_name+"-Sound-Added-With-Guassian-Noise.wav", Frequency, NewSound)  # Saving it to the file.
-    #     b, a = signal.butter(5, 1000 / (Frequency / 2), btype='highpass')  # ButterWorth filter 4350
-    #     filteredSignal = signal.lfilter(b, a, NewSound)
-    #     c, d = signal.butter(5, 380 / (Frequency / 2), btype='lowpass')  # ButterWorth low-filter
-    #     newFilteredSignal = signal.lfilter(c, d, filteredSignal)  # Applying the filter to the signal
-    #     write("audio_files/New-Filtered-"+self.song_l_name+"-Sound.wav", Frequency, newFilteredSignal)  # Saving it to the file.
-    #     self.file_path = "audio_files/New-Filtered-"+self.song_l_name+"-Sound.wav"
-    #     self.song_name = "New-Filtered-"+self.song_l_name+"-Sound.wav"
-    #     self.song_l_name = "New-Filtered-"+self.song_l_name+"-Sound"
 
     def openFileDialog(self):
         # filename = QFileDialog.getOpenFileUrl(self,'open file')
