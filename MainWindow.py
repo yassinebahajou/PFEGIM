@@ -1,5 +1,4 @@
 import sys
-
 from PySide2.QtGui import QPixmap
 from PySide2.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout
 from App_View.ui_MainWindow import Ui_MainWindow
