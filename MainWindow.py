@@ -4,7 +4,7 @@ from PySide2.QtGui import QPixmap
 from PySide2.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout
 from App_View.ui_MainWindow import Ui_MainWindow
 from App_View.Detect_Disease_Window import Detect_Disease_Window
-from App_View.Train_Model_Window import Train_Model_Sklearn_Window,Train_Model_Keras_Window
+from App_View.Train_Model_Window import Train_Model_Keras_Window
 
 
 class MainWindow(QMainWindow):
