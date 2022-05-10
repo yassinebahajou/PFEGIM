@@ -231,7 +231,7 @@ class Train_Model_Keras_Window(QMainWindow):
 
     def show_matrics(self):
         # Setting the attributes
-        fig, px = plt.subplots(figsize=(7.5, 7.5))
+        fig, px = plt.subplots(figsize=(3.5, 3.5))
         px.matshow(self.controller.cm, cmap=plt.cm.YlOrRd, alpha=0.5)
         for m in range(self.controller.cm.shape[0]):
             for n in range(self.controller.cm.shape[1]):

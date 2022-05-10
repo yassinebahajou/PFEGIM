@@ -8,13 +8,13 @@ from App_View.Train_Model_Window import Train_Model_Keras_Window
 
 
 class MainWindow(QMainWindow):
-    def __init__(self):
-        super(MainWindow, self).__init__()
+    def __init__(self,parent=None):
+        super(MainWindow, self).__init__(parent=parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         lay = QVBoxLayout(self.ui.centralwidget)
         label = QLabel(self)
-        pixmap = QPixmap('interfaces/image_1.png')
+        pixmap = QPixmap('files/image_1.png')
         label.setPixmap(pixmap)
         self.resize(pixmap.width(), pixmap.height())
         lay.addWidget(label)
