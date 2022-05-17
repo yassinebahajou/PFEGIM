@@ -67,7 +67,7 @@ class Train_Model_Controller():
         print("classes:", self.x_train.class_indices)
         print(self.x_train is None)
         print(self.x_test is None)
-        path = "D:/workstation/Config/cp.ckpt"
+        path = "config/cp.ckpt"
         cp_callback = tf.keras.callbacks.ModelCheckpoint(path, save_weights_only = True, verbose = 1)
 
         self.model.fit(self.x_train, steps_per_epoch=8,

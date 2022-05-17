@@ -57,7 +57,7 @@ class Detect_Disease_Controller():
         # # load weights into new model
         # # loaded_model.load_weights("model.h5")
         # print("Loaded model from disk")
-        path = "D:/workstation/Config/cp.ckpt"
+        path = "config/cp.ckpt"
         self.init_model()
         self.model.load_weights(path)
         print("Loaded model from disk")
