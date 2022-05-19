@@ -21,8 +21,6 @@ class Detect_Disease_Window(QMainWindow):
         self.ui.setupUi(self)
         self.setWindowTitle("Detect Disease")
         self.controller = Detect_Disease_Controller()
-        # self.ui.button_remove_noise.setVisible(False)
-        # self.ui.button_plot_features.setVisible(False)
         self.ui.button_browse_audio.clicked.connect(self.import_image_file)
         self.ui.button_import_model.clicked.connect(self.import_model)
         self.ui.button_detect_emotion.setEnabled(True)
@@ -40,16 +38,16 @@ class Detect_Disease_Window(QMainWindow):
         self.resize(pixmap.width(),self.height()+pixmap.height())
         lay.addWidget(label)
         self.ui.button_play_audio.setEnabled(True)
-        self.ui.button_plot_audio.setEnabled(True)
         # self.ui.button_extract_features.setEnabled(True)
         self.load_image(selected_Qurl.path()[1:])
         print("image url:",selected_Qurl.path()[1:])
         self.ui.progress_bar.setText("image selected.")
 
     def load_image(self,file_path):
-        self.img = image.load_img(file_path, target_size=(256, 256))
+        self.img = image.load_img(file_path, target_size=(150, 150))
         self.img = image.img_to_array(self.img) / 255
         self.img = np.array([self.img])
+        print(self.img)
         return self.img.shape
 
     def import_model(self):
