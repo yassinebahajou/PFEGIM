@@ -116,7 +116,7 @@ class Train_Model_Controller():
         self.model.compile(loss=keras.losses.binary_crossentropy, optimizer="adam", metrics=['acc'])
 
 
-    def init_model(self):
+    def init_model(self,FileName):
         inputs = Input(shape=(self.img_dims, self.img_dims, 3))
 
         # First conv block
@@ -167,7 +167,7 @@ class Train_Model_Controller():
         self.model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
         # Callbacks
-        self.checkpoint = ModelCheckpoint(filepath='model_weights/best_weights.hdf5', save_best_only=True, save_weights_only=True)
+        self.checkpoint = ModelCheckpoint(filepath='model_weights/'+FileName+'/best_weights.hdf5', save_best_only=True, save_weights_only=True)
         self.lr_reduce = ReduceLROnPlateau(monitor='val_loss', factor=0.3, patience=2, verbose=2, mode='max')
         self.early_stop = EarlyStopping(monitor='val_loss', min_delta=0.1, patience=1, mode='min')
 

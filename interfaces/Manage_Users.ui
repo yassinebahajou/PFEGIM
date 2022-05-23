@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>dialog</class>
+ <widget class="QDialog" name="dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>655</width>
+    <height>445</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Manage Users</string>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QWidget" name="widget" native="true">
+     <property name="styleSheet">
+      <string notr="true">font: 75 12pt &quot;MS Shell Dlg 2&quot;;
+font: 75 14pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="list">
+        <property name="styleSheet">
+         <string notr="true">font: 11pt &quot;Andalus&quot;;
+font: 14pt &quot;MS Shell Dlg 2&quot;;
+font: 75 italic 16pt &quot;Times New Roman&quot;;</string>
+        </property>
+        <property name="text">
+         <string>List Users</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnNewSensor">
+        <property name="styleSheet">
+         <string notr="true">font: 12pt &quot;MS UI Gothic&quot;;
+background-color: rgb(195, 193, 255);
+</string>
+        </property>
+        <property name="text">
+         <string>Add New User</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTableWidget" name="TableSensors">
+        <property name="styleSheet">
+         <string notr="true">
+font: 7pt &quot;MS Shell Dlg 2&quot;;
+</string>
+        </property>
+        <column>
+         <property name="text">
+          <string>Id</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Email</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Password</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Name</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>IsAdmin</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Actions</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

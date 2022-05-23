@@ -27,13 +27,19 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="Action_Model_Training"/>
-    <addaction name="Action_Detect_Emotion"/>
     <addaction name="separator"/>
-    <addaction name="Action_Model_Training_using_Keras"/>
-    <addaction name="Action_Emotion_Detection_using_Keras"/>
+    <addaction name="Action_Model_Training_2"/>
+    <addaction name="Action_Disease_Detection"/>
+   </widget>
+   <widget class="QMenu" name="menuManage">
+    <property name="title">
+     <string>Manage</string>
+    </property>
+    <addaction name="actionUsers"/>
+    <addaction name="actionDiseases"/>
    </widget>
    <addaction name="menufile"/>
+   <addaction name="menuManage"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="Action_New_Recording">
@@ -66,14 +72,24 @@
     <string>Create Model using Sklearn</string>
    </property>
   </action>
-  <action name="Action_Model_Training_using_Keras">
+  <action name="Action_Model_Training_2">
    <property name="text">
-    <string>Create Model using Keras</string>
+    <string>Create Model</string>
    </property>
   </action>
-  <action name="Action_Emotion_Detection_using_Keras">
+  <action name="Action_Disease_Detection">
    <property name="text">
-    <string>Detect Emotion using Keras</string>
+    <string>Detect Emotion</string>
+   </property>
+  </action>
+  <action name="actionUsers">
+   <property name="text">
+    <string>Users</string>
+   </property>
+  </action>
+  <action name="actionDiseases">
+   <property name="text">
+    <string>Diseases</string>
    </property>
   </action>
  </widget>
