@@ -102,7 +102,7 @@ class Detect_Disease_Controller():
     #         self.model = pickle.loads(fstr)
     #     print(self.model)
 
-    def import_model(self,model_path):
+    def import_model(self,folder_name):
         # json_file = open(model_path, 'r')
         # loaded_model_json = json_file.read()
         # json_file.close()
@@ -115,7 +115,7 @@ class Detect_Disease_Controller():
         # # loaded_model.load_weights("model.h5")
         # print("Loaded model from disk")
         # path = "D:/workstation/Config/cp.ckpt"
-        path = "C:/Users/Dell/PycharmProjects/x-ray disease detection/model_weights/best_weights.hdf5"
+        path = "./model_weights/"+folder_name+"/best_weights.hdf5"
         self.init_model()
         self.model.load_weights(path)
         print("Loaded model from disk")

@@ -13,7 +13,12 @@ class Login_Controller():
             csv_reader = csv.reader(csv_file, delimiter=';')
             self.line_count = 0
             for row in csv_reader:
-                user = User(row[0],row[1],row[2],row[3])
+                role = ''
+                if row[3] is 1:
+                    role = 'Admin'
+                else:
+                    role = 'User'
+                user = User(row[0],row[1],row[2],role)
                 self.users.append(user)
                 self.line_count += 1
 

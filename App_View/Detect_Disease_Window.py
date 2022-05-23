@@ -57,7 +57,8 @@ class Detect_Disease_Window(QMainWindow):
         #     if os.sep == '/':
         #         model_path = model_path.replace('/', '\\')
 
-        self.controller.import_model("model_path")
+        self.controller.import_model(self.ui.combo_select.currentText())
+        self.ui.progress_bar.setText(self.ui.combo_select.currentText()+" model imported.")
         self.setWindowTitle("Detect Disease PNEUMONIA")
         # self.show_msg_box("Model Imported successfully, The Model's accuracy is "+au+"%.")
         # self.ui.label_model_details.setText("Auccuracy: "+au+", Date: "+date_)
