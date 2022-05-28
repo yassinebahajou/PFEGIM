@@ -3,7 +3,7 @@ import sys
 
 from PySide2.QtWidgets import QApplication, QWidget, QMessageBox
 from App_View.ui_Login import Ui_Login
-from App_Controller.Login_Controller import Login_Controller
+from App_Controller.User_Controller import User_Controller
 from MainWindow import MainWindow
 
 
@@ -13,7 +13,7 @@ class Login(QWidget):
         self.ui = Ui_Login()
         self.ui.setupUi(self)
         self.ui.btn_Login.clicked.connect(self.Login)
-        self.controller = Login_Controller()
+        self.controller = User_Controller()
         self.Current_User = None
 
     def Login(self):
