@@ -35,13 +35,13 @@ class Ui_dialog(object):
 
         self.verticalLayout.addWidget(self.list)
 
-        self.btnNewSensor = QPushButton(self.widget)
-        self.btnNewSensor.setObjectName(u"btnNewSensor")
-        self.btnNewSensor.setStyleSheet(u"font: 12pt \"MS UI Gothic\";\n"
+        self.btnNewUser = QPushButton(self.widget)
+        self.btnNewUser.setObjectName(u"btnNewUser")
+        self.btnNewUser.setStyleSheet(u"font: 12pt \"MS UI Gothic\";\n"
 "background-color: rgb(195, 193, 255);\n"
 "")
 
-        self.verticalLayout.addWidget(self.btnNewSensor)
+        self.verticalLayout.addWidget(self.btnNewUser)
 
         self.TableSensors = QTableWidget(self.widget)
         if (self.TableSensors.columnCount() < 6):
@@ -77,7 +77,7 @@ class Ui_dialog(object):
     def retranslateUi(self, dialog):
         dialog.setWindowTitle(QCoreApplication.translate("dialog", u"Manage Users", None))
         self.list.setText(QCoreApplication.translate("dialog", u"List Users", None))
-        self.btnNewSensor.setText(QCoreApplication.translate("dialog", u"Add New User", None))
+        self.btnNewUser.setText(QCoreApplication.translate("dialog", u"Add New User", None))
         ___qtablewidgetitem = self.TableSensors.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("dialog", u"Id", None));
         ___qtablewidgetitem1 = self.TableSensors.horizontalHeaderItem(1)

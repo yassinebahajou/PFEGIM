@@ -37,7 +37,7 @@ font: 75 italic 16pt &quot;Times New Roman&quot;;</string>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="btnNewSensor">
+       <widget class="QPushButton" name="btnNewUser">
         <property name="styleSheet">
          <string notr="true">font: 12pt &quot;MS UI Gothic&quot;;
 background-color: rgb(195, 193, 255);
