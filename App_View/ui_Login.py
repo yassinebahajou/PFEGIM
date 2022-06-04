@@ -72,8 +72,8 @@ class Ui_Login(object):
 
     def retranslateUi(self, Login):
         Login.setWindowTitle(QCoreApplication.translate("Login", u"Login", None))
-        self.label.setText(QCoreApplication.translate("Login", u"Email", None))
-        self.label_2.setText(QCoreApplication.translate("Login", u"mot de pass", None))
-        self.btn_Login.setText(QCoreApplication.translate("Login", u"Login", None))
+        self.label.setText(QCoreApplication.translate("Login", u"E-mail", None))
+        self.label_2.setText(QCoreApplication.translate("Login", u"Mot de passe", None))
+        self.btn_Login.setText(QCoreApplication.translate("Login", u"Connexion", None))
     # retranslateUi
 

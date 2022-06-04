@@ -14,7 +14,7 @@ class Login_Controller():
             self.line_count = 0
             for row in csv_reader:
                 role = ''
-                if row[3] is 1:
+                if row[3] == 1:
                     role = 'Admin'
                 else:
                     role = 'User'
