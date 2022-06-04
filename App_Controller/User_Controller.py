@@ -16,7 +16,7 @@ class User_Controller():
             for row in csv_reader:
                 role = ''
                 print("rolw:"+row[3])
-                if row[3] is 1:
+                if row[3] == 1:
                     role = 'Admin'
                 else:
                     role = 'User'

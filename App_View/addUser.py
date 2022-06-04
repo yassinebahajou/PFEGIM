@@ -1,5 +1,4 @@
 import sys
-from PyQt5.QtCore import Qt
 from PySide2.QtWidgets import QWidget, QApplication, QCheckBox, QDialog
 
 from App_Controller.User_Controller import User_Controller
