@@ -75,7 +75,7 @@ class Ui_MainWindow(object):
         self.Action_Detect_Emotion.setText(QCoreApplication.translate("MainWindow", u"Detect Emotion using Sklearn", None))
         self.Action_Model_Training.setText(QCoreApplication.translate("MainWindow", u"Create Model using Sklearn", None))
         self.Action_Model_Training_2.setText(QCoreApplication.translate("MainWindow", u"Create Model", None))
-        self.Action_Disease_Detection.setText(QCoreApplication.translate("MainWindow", u"Detect Emotion", None))
+        self.Action_Disease_Detection.setText(QCoreApplication.translate("MainWindow", u"Detect Disease", None))
         self.actionUsers.setText(QCoreApplication.translate("MainWindow", u"Users", None))
         self.actionDiseases.setText(QCoreApplication.translate("MainWindow", u"Diseases", None))
         self.menufile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))

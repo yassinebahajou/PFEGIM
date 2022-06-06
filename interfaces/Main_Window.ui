@@ -79,7 +79,7 @@
   </action>
   <action name="Action_Disease_Detection">
    <property name="text">
-    <string>Detect Emotion</string>
+    <string>Detect Disease</string>
    </property>
   </action>
   <action name="actionUsers">
