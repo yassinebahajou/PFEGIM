@@ -194,21 +194,6 @@ class Train_Model_Controller():
         self.acc = accuracy_score(self.test_labels, np.round(preds)) * 100
         self.cm = confusion_matrix(self.test_labels, np.round(preds))
 
-    def save_model(self):
-        pickled_model_string = pickle.dumps(self.model)
-        model_json = self.model.to_json()
-        d = datetime.now().strftime("%d-%m-%Y %H=%M=%S")
-        au = "80"
-        with open("D:/workstation/MyModel/MyModel" + d + "_" + au + "_.json", "w") as json_file:
-            print("saving..")
-            json_file.write(model_json)
-
-        self.model.save_weights("model.h5")
-        print("model saved.")
-        # with open("D:/workstation/MyModel/MyModel_" + d + "_" + au + "_.txt", "wb") as file:
-        #
-        #     file.write(pickled_model_string)
-
     def load_image(self,file_path):
         self.img = image.load_img(file_path, target_size=(256, 256))
         self.img = image.img_to_array(self.img) / 255

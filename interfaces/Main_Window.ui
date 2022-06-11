@@ -20,12 +20,12 @@
      <x>0</x>
      <y>0</y>
      <width>601</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menufile">
     <property name="title">
-     <string>Fichier</string>
+     <string>File</string>
     </property>
     <addaction name="separator"/>
     <addaction name="Action_Model_Training_2"/>
@@ -74,22 +74,22 @@
   </action>
   <action name="Action_Model_Training_2">
    <property name="text">
-    <string>Créer un Modèle</string>
+    <string>Create Model</string>
    </property>
   </action>
   <action name="Action_Disease_Detection">
    <property name="text">
-    <string>Détecter une Maladie</string>
+    <string>Detect Disease</string>
    </property>
   </action>
   <action name="actionUsers">
    <property name="text">
-    <string>Utilisateurs</string>
+    <string>Users</string>
    </property>
   </action>
   <action name="actionDiseases">
    <property name="text">
-    <string>Maladies</string>
+    <string>Diseases</string>
    </property>
   </action>
  </widget>

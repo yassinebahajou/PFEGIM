@@ -1,18 +1,11 @@
-import pickle
-
-from keras.models import model_from_json
-
-from App_Model.Keras_Model import extract_feature as keras_extracter
-from App_Model.Sklearn_Model import extract_feature as sklearn_extracter
 import keras
-import tensorflow as tf
-from keras.layers import Dense, Conv2D, MaxPool2D, Dropout, Flatten
-from keras.models import Sequential
-from keras.preprocessing import image
+import scipy
 from keras.models import Model, Sequential
 from keras.layers import Input, Dense, Flatten, Dropout, BatchNormalization
-from keras.layers import Conv2D, SeparableConv2D, MaxPool2D, LeakyReLU, Activation
-from keras.callbacks import ModelCheckpoint, ReduceLROnPlateau, EarlyStopping
+from keras.layers import Conv2D, SeparableConv2D, MaxPool2D
+from keras import backend as K
+# from keract import display_activations
+import numpy as np
 
 class Detect_Disease_Controller():
     def __init__(self):
@@ -94,27 +87,7 @@ class Detect_Disease_Controller():
         self.model = Model(inputs=inputs, outputs=output)
         self.model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
-    # def import_model(self,model_path):
-    #     print("import controller model:")
-    #     print(model_path)
-    #     with open(model_path, "rb") as file:
-    #         fstr = file.read()
-    #         self.model = pickle.loads(fstr)
-    #     print(self.model)
-
     def import_model(self,folder_name):
-        # json_file = open(model_path, 'r')
-        # loaded_model_json = json_file.read()
-        # json_file.close()
-        # print("import model json")
-        # self.model = model_from_json(loaded_model_json)
-        # self.model.load_weights("model.h5")
-        # accuarcy = 70
-        # date_ = 22
-        # # load weights into new model
-        # # loaded_model.load_weights("model.h5")
-        # print("Loaded model from disk")
-        # path = "D:/workstation/Config/cp.ckpt"
         path = "./model_weights/"+folder_name+"/best_weights.hdf5"
         self.init_model()
         self.model.load_weights(path)
@@ -125,11 +98,46 @@ class Detect_Disease_Controller():
 
     def detect_disease(self,img):
         emotion = self.model.predict(img)
-        # print((emotion > 0.5).astype("int32"))
-        # print((emotion > 0.5).astype("int32")[0][0])
         indice = (emotion > 0.5).astype("int32")[0][0]
         return self.classes[indice]
 
+    def get_class_activation_map(self, img):
+        '''
+        this function computes the class activation map
 
+        Inputs:
+            1) model (tensorflow model) : trained model
+            2) img (numpy array of shape (224, 224, 3)) : input image
+        '''
+
+        # expand dimension to fit the image to a network accepted input size
+        img = np.expand_dims(img, axis=0)
+
+        # predict to get the winning class
+        predictions = self.model.predict(img)
+        label_index = np.argmax(predictions)
+
+        # Get the 2048 input weights to the softmax of the winning class.
+        class_weights = self.model.layers[-1].get_weights()[0]
+        class_weights_winner = class_weights[:, label_index]
+
+        # get the final conv layer
+        final_conv_layer = self.model.get_layer("dense_3")
+
+        # create a function to fetch the final conv layer output maps (should be shape (1, 7, 7, 2048))
+        get_output = K.function([self.model.layers[0].input], [final_conv_layer.output,self.model.layers[-1].output])
+        [conv_outputs, predictions] = get_output([img])
+
+        # squeeze conv map to shape image to size (7, 7, 2048)
+        conv_outputs = np.squeeze(conv_outputs)
+
+        # bilinear upsampling to resize each filtered image to size of original image
+        mat_for_mult = scipy.ndimage.zoom(conv_outputs, (32, 32, 1), order=1)  # dim: 224 x 224 x 2048
+
+        # get class activation map for object class that is predicted to be in the image
+        final_output = np.dot(mat_for_mult.reshape((224 * 224, 2048)), class_weights_winner).reshape(224,224)  # dim: 224 x 224
+
+        # return class activation map
+        return final_output, label_index
 
 

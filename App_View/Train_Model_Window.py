@@ -8,7 +8,7 @@ from PySide2.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBo
 from App_Model.Worker import Worker
 from App_View.ui_Train_Model_Window import Ui_Train_Model_Window
 from App_View.Load_Window import LoadWindow
-from LoadingScreen import LoadingScreen
+# from LoadingScreen import LoadingScreen
 from App_Controller.Train_Model_Controller import Train_Model_Controller
 
 import pandas as pd

@@ -5,6 +5,7 @@ from App_View.ui_MainWindow import Ui_MainWindow
 from App_View.Detect_Disease_Window import Detect_Disease_Window
 from App_View.Train_Model_Window import Train_Model_Keras_Window
 from App_View.Manage_Users import ManageUsers
+from App_View.Manage_Patients import ManagePatient
 
 
 class MainWindow(QMainWindow):
@@ -18,25 +19,15 @@ class MainWindow(QMainWindow):
         label.setPixmap(pixmap)
         self.resize(pixmap.width(), pixmap.height())
         lay.addWidget(label)
-        # self.ui.Action_Detect_Emotion.triggered.connect(self.load_Detect_Emotion_Sklearn_Window)
-        # self.ui.Action_Model_Training.triggered.connect(self.load_Train_Model_Sklearn_Window)
+
         self.ui.Action_Disease_Detection.triggered.connect(self.load_Detect)
         self.ui.Action_Model_Training_2.triggered.connect(self.load_Train)
         self.ui.actionUsers.triggered.connect(self.load_Users)
-
-
-
-    # def load_Detect_Emotion_Sklearn_Window(self):
-    #     Detect_Emotion_Dialog = Detect_Disease_Window(parent=self)
-    #     Detect_Emotion_Dialog.show()
-    #
-    # def load_Train_Model_Sklearn_Window(self):
-    #     Train_Model_Dialog = Train_Model_Sklearn_Window(parent=self)
-    #     Train_Model_Dialog.show()
+        self.ui.actionDiseases.triggered.connect(self.load_Patients)
 
     def load_Detect(self):
         Detect_Emotion_Dialog = Detect_Disease_Window(parent=self)
-        Detect_Emotion_Dialog.show()
+        Detect_Emotion_Dialog.showMaximized()
 
     def load_Train(self):
         Train_Model_Dialog = Train_Model_Keras_Window(parent=self)
@@ -45,6 +36,10 @@ class MainWindow(QMainWindow):
     def load_Users(self):
         Manage_Users_Dialog = ManageUsers(parent=self)
         Manage_Users_Dialog.show()
+
+    def load_Patients(self):
+        Manage_Patient_Dialog = ManagePatient(parent=self)
+        Manage_Patient_Dialog.show()
 
 
 
