@@ -5,13 +5,11 @@ from PySide2.QtWidgets import QApplication, QMainWindow, QFileDialog, QDialog, Q
     QLabel
 from PySide2 import QtCore
 from App_View.ui_Detect_Disease_Window import Ui_Detect_Disease_Window, QPixmap
-import matplotlib.pyplot as plt
-from xml.dom import minidom
-from xml.etree import ElementTree
 from keras.preprocessing import image
 import numpy as np
 
 from App_Controller.Detect_Disease_Controller import Detect_Disease_Controller
+from App_View.addPatient import AddPatient
 
 
 class Detect_Disease_Window(QMainWindow):
@@ -20,22 +18,25 @@ class Detect_Disease_Window(QMainWindow):
         self.ui = Ui_Detect_Disease_Window()
         self.ui.setupUi(self)
         self.setWindowTitle("Detect Disease")
+
         self.controller = Detect_Disease_Controller()
         self.ui.button_browse_audio.clicked.connect(self.import_image_file)
         self.ui.button_import_model.clicked.connect(self.import_model)
         self.ui.button_detect_emotion.setEnabled(True)
         self.ui.button_detect_emotion.clicked.connect(self.detect_disease)
+        self.ui.button_save_patient.clicked.connect(self.AddPatientWindow)
 
 
 
     def import_image_file(self):
         selected_Qurl = QFileDialog.getOpenFileUrl(self, "Choose XRAY to Import", 'D:')[0]
-        lay = QVBoxLayout(self.ui.widget)
+        lay = QVBoxLayout(self.ui.imageWidget)
         label = QLabel(self)
         pixmap = QPixmap(selected_Qurl.path()[1:])
         label.setPixmap(pixmap)
-        self.ui.widget.resize(pixmap.width(),pixmap.height())
-        self.resize(pixmap.width(),self.height()+pixmap.height())
+        self.ui.imageWidget.resize(pixmap.width(),pixmap.height())
+        self.ui.widget.resize(self.width(),self.height())
+        # self.resize(pixmap.width(),self.height()+pixmap.height())
         lay.addWidget(label)
         self.ui.button_play_audio.setEnabled(True)
         # self.ui.button_extract_features.setEnabled(True)
@@ -44,11 +45,15 @@ class Detect_Disease_Window(QMainWindow):
         self.ui.progress_bar.setText("image selected.")
 
     def load_image(self,file_path):
+        self.img_path = file_path
         self.img = image.load_img(file_path, target_size=(150, 150))
         self.img = image.img_to_array(self.img) / 255
         self.img = np.array([self.img])
-        print(self.img)
+        # self.save_image(file_path)
+        print("image shape: ",self.img)
+        print("image shape: ",self.img[0].shape)
         return self.img.shape
+
 
     def import_model(self):
         print("import model")
@@ -65,9 +70,12 @@ class Detect_Disease_Window(QMainWindow):
         # print(self.controller.detect_emotion())
 
     def detect_disease(self):
-        d = self.controller.detect_disease(self.img)
-        print("emotion:", d)
-        self.show_msg_box("Disease Detection Done,X-Ray ["+str(d)+"]")
+        self.disease = self.controller.detect_disease(self.img)
+        print("emotion:", self.disease)
+        self.show_msg_box("Disease Detection Done,X-Ray ["+self.disease+"]")
+        # r1,r2 = self.controller.get_class_activation_map(self.img[0])
+        # print(r1," tata ",type(r1))
+        # print(r2," tata ",type(r2))
 
     def show_msg_box(self, text):
         msgBox = QMessageBox()
@@ -93,6 +101,10 @@ class Detect_Disease_Window(QMainWindow):
 
     def launchExcelFile(self):
         os.system("start EXCEL.EXE "+self.current_file_features)
+
+    def AddPatientWindow(self):
+        window = AddPatient(Image=self.img_path,infected = self.disease+" "+self.ui.combo_select.currentText(),parent=self)
+        window.show()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
