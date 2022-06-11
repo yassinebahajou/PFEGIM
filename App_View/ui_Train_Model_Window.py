@@ -87,13 +87,13 @@ class Ui_Train_Model_Window(object):
 
     def retranslateUi(self, Train_Model_Window):
         Train_Model_Window.setWindowTitle(QCoreApplication.translate("Train_Model_Window", u"Ui_Model_Tranining_Window", None))
-        self.button_browse_directory.setText(QCoreApplication.translate("Train_Model_Window", u"Browse Source", None))
+        self.button_browse_directory.setText(QCoreApplication.translate("Train_Model_Window", u"Sélectionner un dossier", None))
         self.combo_select.setItemText(0, QCoreApplication.translate("Train_Model_Window", u"PNEUMONIA", None))
         self.combo_select.setItemText(1, QCoreApplication.translate("Train_Model_Window", u"Covid 19", None))
 
-        self.button_load_data.setText(QCoreApplication.translate("Train_Model_Window", u"Load Data", None))
+        self.button_load_data.setText(QCoreApplication.translate("Train_Model_Window", u"Importer Data", None))
         self.button_init_model.setText(QCoreApplication.translate("Train_Model_Window", u"Init Data", None))
-        self.button_show_matrics.setText(QCoreApplication.translate("Train_Model_Window", u"Show Metrics", None))
-        self.progress_bar.setText(QCoreApplication.translate("Train_Model_Window", u"select you Xray Image.", None))
+        self.button_show_matrics.setText(QCoreApplication.translate("Train_Model_Window", u"Confusion Matrice", None))
+        self.progress_bar.setText(QCoreApplication.translate("Train_Model_Window", u"sélectionner Xray Image.", None))
     # retranslateUi
 

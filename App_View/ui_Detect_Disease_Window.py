@@ -94,6 +94,6 @@ class Ui_Detect_Disease_Window(object):
         self.button_browse_audio.setText(QCoreApplication.translate("Detect_Disease_Window", u"Sélectionner une Image", None))
         self.button_play_audio.setText(QCoreApplication.translate("Detect_Disease_Window", u"Afficher l'Image", None))
         self.button_detect_emotion.setText(QCoreApplication.translate("Detect_Disease_Window", u"Résultat", None))
-        self.progress_bar.setText(QCoreApplication.translate("Detect_Disease_Window", u"select you Xray Image.", None))
+        self.progress_bar.setText(QCoreApplication.translate("Detect_Disease_Window", u"sélectionner X-ray image", None))
     # retranslateUi
 

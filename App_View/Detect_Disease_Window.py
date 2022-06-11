@@ -42,7 +42,7 @@ class Detect_Disease_Window(QMainWindow):
         # self.ui.button_extract_features.setEnabled(True)
         self.load_image(selected_Qurl.path()[1:])
         print("image url:",selected_Qurl.path()[1:])
-        self.ui.progress_bar.setText("image selected.")
+        self.ui.progress_bar.setText("Image sélectionnée.")
 
     def load_image(self,file_path):
         self.img = image.load_img(file_path, target_size=(150, 150))
@@ -68,7 +68,7 @@ class Detect_Disease_Window(QMainWindow):
     def detect_disease(self):
         d = self.controller.detect_disease(self.img)
         print("emotion:", d)
-        self.show_msg_box("Disease Detection Done,X-Ray ["+str(d)+"]")
+        self.show_msg_box("Détection d'infection terminée,X-Ray ["+str(d)+"]")
 
     def show_msg_box(self, text):
         msgBox = QMessageBox()
