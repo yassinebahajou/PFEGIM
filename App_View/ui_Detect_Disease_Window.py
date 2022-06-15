@@ -108,14 +108,14 @@ class Ui_Detect_Disease_Window(object):
 
     def retranslateUi(self, Detect_Disease_Window):
         Detect_Disease_Window.setWindowTitle(QCoreApplication.translate("Detect_Disease_Window", u"Detect_Emotion_Window", None))
-        self.button_import_model.setText(QCoreApplication.translate("Detect_Disease_Window", u"Import Model", None))
+        self.button_import_model.setText(QCoreApplication.translate("Detect_Disease_Window", u"Importer le Modèle", None))
         self.combo_select.setItemText(0, QCoreApplication.translate("Detect_Disease_Window", u"PNEUMONIA", None))
-        self.combo_select.setItemText(1, QCoreApplication.translate("Detect_Disease_Window", u"Covid 19", None))
+        self.combo_select.setItemText(1, QCoreApplication.translate("Detect_Disease_Window", u"COVID-19", None))
 
-        self.button_browse_audio.setText(QCoreApplication.translate("Detect_Disease_Window", u"Browse XRay Image", None))
-        self.button_play_audio.setText(QCoreApplication.translate("Detect_Disease_Window", u"Show Xray Image", None))
-        self.button_detect_emotion.setText(QCoreApplication.translate("Detect_Disease_Window", u"Detect Disease", None))
-        self.progress_bar.setText(QCoreApplication.translate("Detect_Disease_Window", u"select you Xray Image.", None))
-        self.button_save_patient.setText(QCoreApplication.translate("Detect_Disease_Window", u"Save Patient", None))
+        self.button_browse_audio.setText(QCoreApplication.translate("Detect_Disease_Window", u"Sélectionner une Image", None))
+        self.button_play_audio.setText(QCoreApplication.translate("Detect_Disease_Window", u"Afficher l'Image", None))
+        self.button_detect_emotion.setText(QCoreApplication.translate("Detect_Disease_Window", u"Résultat", None))
+        self.progress_bar.setText(QCoreApplication.translate("Detect_Disease_Window", u"sélectionner l'image.", None))
+        self.button_save_patient.setText(QCoreApplication.translate("Detect_Disease_Window", u"Sauvegarder la Patient", None))
     # retranslateUi
 

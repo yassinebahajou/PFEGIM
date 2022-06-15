@@ -9,7 +9,7 @@ import numpy as np
 
 class Detect_Disease_Controller():
     def __init__(self):
-        self.classes = ["Normal","Infected"]
+        self.classes = ["Normale","Infecté"]
         self.img_dims = 150
         self.epochs = 10
         self.batch_size = 32

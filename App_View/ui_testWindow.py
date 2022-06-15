@@ -35,7 +35,7 @@ class Ui_MainWindow(object):
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        MainWindow.setStatusBar(self.statusbar)y
 
         self.menubar.addAction(self.menulala.menuAction())
 
