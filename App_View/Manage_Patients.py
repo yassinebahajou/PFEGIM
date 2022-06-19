@@ -37,7 +37,7 @@ class ManagePatient(QDialog):
             # pWidget = QWidget()
             # pLayout = QLayout()
             button = QPushButton(self.ui.widget)
-            button.setText("Plot Image")
+            button.setText("Afficher Image")
             button.clicked.connect(partial(self.plot_image,row))
             # pLayout.addWidget(button)
             # pWidget.setLayout(pLayout)

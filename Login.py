@@ -43,5 +43,4 @@ if __name__ == "__main__":
     print("skqcgfisec")
     window = Login()
     window.show()
-
     sys.exit(app.exec_())

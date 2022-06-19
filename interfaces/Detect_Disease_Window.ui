@@ -32,7 +32,7 @@
        </size>
       </property>
       <property name="text">
-       <string>Import Model</string>
+       <string>Importer un  Modèle</string>
       </property>
      </widget>
     </item>
@@ -48,7 +48,7 @@
       </item>
       <item>
        <property name="text">
-        <string>Covid 19</string>
+        <string>COVID-19</string>
        </property>
       </item>
      </widget>
@@ -75,7 +75,7 @@
        </size>
       </property>
       <property name="text">
-       <string>Browse XRay Image</string>
+       <string>Sélectionner une Image</string>
       </property>
      </widget>
     </item>
@@ -98,7 +98,7 @@
        </size>
       </property>
       <property name="text">
-       <string>Show Xray Image</string>
+       <string>Afficher l'Image</string>
       </property>
      </widget>
     </item>
@@ -114,7 +114,7 @@
        </size>
       </property>
       <property name="text">
-       <string>Detect Disease</string>
+       <string>Résultat</string>
       </property>
      </widget>
     </item>

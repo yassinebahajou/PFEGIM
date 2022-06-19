@@ -120,9 +120,9 @@ class Ui_AddUser(object):
         AddUser.setWindowTitle(QCoreApplication.translate("AddUser", u"Dialog", None))
         self.TitleForm.setText(QCoreApplication.translate("AddUser", u"Ajouter Patient", None))
         self.oid.setText(QCoreApplication.translate("AddUser", u"Nom: ", None))
-        self.name.setText(QCoreApplication.translate("AddUser", u"Prenom:", None))
-        self.maxValue.setText(QCoreApplication.translate("AddUser", u"Age", None))
-        self.minValue.setText(QCoreApplication.translate("AddUser", u"Sex", None))
+        self.name.setText(QCoreApplication.translate("AddUser", u"Prénom:", None))
+        self.maxValue.setText(QCoreApplication.translate("AddUser", u"Âge", None))
+        self.minValue.setText(QCoreApplication.translate("AddUser", u"Identité sexuelle", None))
         self.cb_sex.setItemText(0, QCoreApplication.translate("AddUser", u"Homme", None))
         self.cb_sex.setItemText(1, QCoreApplication.translate("AddUser", u"Femme", None))
 

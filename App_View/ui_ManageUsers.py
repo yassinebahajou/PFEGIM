@@ -76,18 +76,18 @@ class Ui_dialog(object):
 
     def retranslateUi(self, dialog):
         dialog.setWindowTitle(QCoreApplication.translate("dialog", u"Manage Users", None))
-        self.list.setText(QCoreApplication.translate("dialog", u"List Users", None))
-        self.btnNewUser.setText(QCoreApplication.translate("dialog", u"Add New User", None))
+        self.list.setText(QCoreApplication.translate("dialog", u"Liste des utilisateurs", None))
+        self.btnNewUser.setText(QCoreApplication.translate("dialog", u"Ajouter un nouveau utilisateur", None))
         ___qtablewidgetitem = self.TableSensors.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("dialog", u"Id", None));
+        ___qtablewidgetitem.setText(QCoreApplication.translate("dialog", u"Identifiant", None));
         ___qtablewidgetitem1 = self.TableSensors.horizontalHeaderItem(1)
         ___qtablewidgetitem1.setText(QCoreApplication.translate("dialog", u"Email", None));
         ___qtablewidgetitem2 = self.TableSensors.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("dialog", u"Password", None));
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("dialog", u"Mot de passe", None));
         ___qtablewidgetitem3 = self.TableSensors.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("dialog", u"Name", None));
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("dialog", u"Nom", None));
         ___qtablewidgetitem4 = self.TableSensors.horizontalHeaderItem(4)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("dialog", u"IsAdmin", None));
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("dialog", u"Admin", None));
         ___qtablewidgetitem5 = self.TableSensors.horizontalHeaderItem(5)
         ___qtablewidgetitem5.setText(QCoreApplication.translate("dialog", u"Actions", None));
     # retranslateUi

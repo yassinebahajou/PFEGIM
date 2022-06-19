@@ -42,7 +42,7 @@ class Detect_Disease_Window(QMainWindow):
         # self.ui.button_extract_features.setEnabled(True)
         self.load_image(selected_Qurl.path()[1:])
         print("image url:",selected_Qurl.path()[1:])
-        self.ui.progress_bar.setText("image selected.")
+        self.ui.progress_bar.setText("image sélectionnée.")
 
     def load_image(self,file_path):
         self.img_path = file_path
@@ -63,7 +63,7 @@ class Detect_Disease_Window(QMainWindow):
         #         model_path = model_path.replace('/', '\\')
 
         self.controller.import_model(self.ui.combo_select.currentText())
-        self.ui.progress_bar.setText(self.ui.combo_select.currentText()+" model imported.")
+        self.ui.progress_bar.setText(self.ui.combo_select.currentText()+" modèle importé.")
         self.setWindowTitle("Detect Disease PNEUMONIA")
         # self.show_msg_box("Model Imported successfully, The Model's accuracy is "+au+"%.")
         # self.ui.label_model_details.setText("Auccuracy: "+au+", Date: "+date_)
@@ -72,7 +72,7 @@ class Detect_Disease_Window(QMainWindow):
     def detect_disease(self):
         self.disease = self.controller.detect_disease(self.img)
         print("emotion:", self.disease)
-        self.show_msg_box("Disease Detection Done,X-Ray ["+self.disease+"]")
+        self.show_msg_box("Détection d'infection terminée ,X-Ray ["+self.disease+"]")
         # r1,r2 = self.controller.get_class_activation_map(self.img[0])
         # print(r1," tata ",type(r1))
         # print(r2," tata ",type(r2))

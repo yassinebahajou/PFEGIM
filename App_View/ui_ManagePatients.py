@@ -70,20 +70,20 @@ class Ui_dialog(object):
 
     def retranslateUi(self, dialog):
         dialog.setWindowTitle(QCoreApplication.translate("dialog", u"Manage Patients", None))
-        self.list.setText(QCoreApplication.translate("dialog", u"List Patiets", None))
+        self.list.setText(QCoreApplication.translate("dialog", u"Liste des patients", None))
         ___qtablewidgetitem = self.TableSensors.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("dialog", u"num", None));
+        ___qtablewidgetitem.setText(QCoreApplication.translate("dialog", u"N° dossier", None));
         ___qtablewidgetitem1 = self.TableSensors.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("dialog", u"nom", None));
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("dialog", u"Nom", None));
         ___qtablewidgetitem2 = self.TableSensors.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("dialog", u"prenom", None));
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("dialog", u"Prénom", None));
         ___qtablewidgetitem3 = self.TableSensors.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("dialog", u"age", None));
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("dialog", u"Âge", None));
         ___qtablewidgetitem4 = self.TableSensors.horizontalHeaderItem(4)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("dialog", u"sex", None));
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("dialog", u"Sexe", None));
         ___qtablewidgetitem5 = self.TableSensors.horizontalHeaderItem(5)
-        ___qtablewidgetitem5.setText(QCoreApplication.translate("dialog", u"condition", None));
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("dialog", u"Résultat", None));
         ___qtablewidgetitem6 = self.TableSensors.horizontalHeaderItem(6)
-        ___qtablewidgetitem6.setText(QCoreApplication.translate("dialog", u"xray", None));
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("dialog", u"X-ray", None));
     # retranslateUi
 

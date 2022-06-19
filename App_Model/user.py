@@ -7,8 +7,8 @@ class User():
         self.name = name
         self.isAdmin = isAdmin
 
-    def isUser(self,mail,password):
-        if(self.mail==mail and self.pwd == password):
+    def isUser(self,email,password):
+        if(self.mail==email and self.pwd == password):
             return True
         return False
 
