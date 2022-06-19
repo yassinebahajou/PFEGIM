@@ -31,6 +31,7 @@ class Ui_Login(object):
 
         self.lineEdit_pwd = QLineEdit(Login)
         self.lineEdit_pwd.setObjectName(u"lineEdit_pwd")
+        self.lineEdit_pwd.setEchoMode(QLineEdit.Password)
 
         self.formLayout.setWidget(1, QFormLayout.FieldRole, self.lineEdit_pwd)
 
