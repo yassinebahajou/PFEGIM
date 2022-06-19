@@ -51,15 +51,15 @@ class Train_Model_Controller():
         test_data = []
         test_labels = []
 
-        for cond in ['/NORMAL/', '/PNEUMONIA/']:
+        for cond in ['/0_NORMAL/', '/1_INFECTED/']:
             for img in (os.listdir(input_path + '/test' + cond)):
                 img = plt.imread(input_path + '/test' + cond + img)
                 img = cv2.resize(img, (img_dims, img_dims))
                 img = np.dstack([img, img, img])
                 img = img.astype('float32') / 255
-                if cond == '/NORMAL/':
+                if cond == '/0_NORMAL/':
                     label = 0
-                elif cond == '/PNEUMONIA/':
+                elif cond == '/1_INFECTED/':
                     label = 1
                 test_data.append(img)
                 test_labels.append(label)
@@ -117,7 +117,7 @@ class Train_Model_Controller():
 
 
     def init_model(self,FileName):
-        inputs = Input(shape=(self.img_dims, self.img_dims, 3))
+        inputs = Input(shape=(self.img_dims, self.img_dims,3))
 
         # First conv block
         x = Conv2D(filters=16, kernel_size=(3, 3), activation='relu', padding='same')(inputs)
